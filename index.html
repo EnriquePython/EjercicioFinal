@@ -1,58 +1,73 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Mi Portafolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enrique Martínez Messía</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Imagen de presentación -->
-    <img src="Foto_perfil.jpg" alt="Foto de perfil" width="150">
+  <!-- Encabezado con foto y nombre -->
+  <header class="header">
+    <div class="header-content">
+      <img src="Foto_perfil.jpg" alt="Foto Enrique Martínez Messía" class="foto">
+      <h1>ENRIQUE MARTÍNEZ MESSÍA DE LA CERDA/MODELADOR BIM</h1>
+    </div>
+  </header>
 
-    <!-- Texto de presentación -->
-    <!-- Usamos esta etiqueta para escribir párrafos de texto. -->
-    <p>Mi nombre es <strong>Enrique Martinez</strong>, mi profesión es Modelador BIM.</p>
-    <p>Estoy especializado en el programa Revit. Además, domino otros programas relacionados siempre con la arquitectura e ingeniería.</p>
+  <!-- Menú -->
+  <nav class="menu">
+    <a href="#">EXPERIENCIA</a>
+    <a href="#">FORMACIÓN</a>
+    <a href="#">HABILIDADES</a>
+    <a href="#">IDIOMAS</a>
+    <a href="#">PERFIL</a>
+  </nav>
 
-    <!-- Enlace a LinkedIn -->
-    <p>
-        <a href="https://www.linkedin.com/in/enrique-martínez-messía" target="_blank">Visita mi perfil en LinkedIn</a> 
-    </p>
-
-    <!-- Mapa de Google Maps -->
-    <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3048.1344900439773!2d-3.939829484605346!3d38.984829179558654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6c435c7d05b4b9%3A0x103d0e676f33d1!2sCiudad%20Real!5e0!3m2!1ses!2ses!4v1695900000000"
-        width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy">
-    </iframe>
-
-    <!-- Tabla de opciones. Usamos la etiqueta "<th>" para definir el encabezado de una celda. Con la etiqueta "<tr>" indicamos una fila de celdas de una tabla. -->
-    <table border="1">
-        <tr>
-            <th>Programas</th>
-            <th>Nivel</th>
-            <th>Disciplina</th>
-        </tr>
-        <tr>
-            <td>Revit</td><td>Avanzado</td><td>Arquitectura</td>
-        </tr>
-        <tr>
-            <td>AutoCAD</td><td>Medio</td><td>MEP</td>
-        </tr>
+  <!-- Tabla de programas -->
+  <section class="tabla">
+    <table>
+      <tr>
+        <th>PROGRAMAS</th>
+        <th>NIVEL</th>
+        <th>DISCIPLINA</th>
+      </tr>
+      <tr>
+        <td>REVIT</td>
+        <td>PROFESIONAL</td>
+        <td>ARQUITECTURA</td>
+      </tr>
+      <tr>
+        <td>AutoCAD</td>
+        <td>MEDIO</td>
+        <td>MEP</td>
+      </tr>
     </table>
+  </section>
 
-    <!-- Formulario de contacto. Con la etiqueta "<form>" se produce la apertura y cierre de la página web. -->
-    <h3>Contacto</h3>
-    <form>
-        Nombre: <input type="text" name="nombre"><br><br>
-        Email: <input type="email" name="email"><br><br>
-        Mensaje: <textarea name="mensaje"></textarea><br><br>
-        <input type="submit" value="Enviar">
-    </form>
+  <!-- Enlaces -->
+  <section class="enlaces">
+    <div class="enlace-linkedin">
+      <a href="https://www.linkedin.com/in/enrique-martinez-messia" target="_blank">
+        www.linkedin.com/in/enrique-martinez-messia
+      </a>
+    </div>
+    
+    <div class="enlace-maps">
+      <span>Link a google maps</span>
+      <a href="https://www.google.com/maps/place/Ciudad+Real" target="_blank">
+        <button class="maps-button">📍 Ciudad Real</button>
+      </a>
+    </div>
+  </section>
 
-    <!-- Botón con evento vacío. -->
-    <button onclick"">Botón de prueba</button>
-
-    <!-- Evento de prueba -->
-    <p onclick="">Haz clic aquí</p>
-
+  <!-- Video de YouTube embebido -->
+  <section class="video-section">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/9y2X2PpcQoc?si=YyrKhSZHk6UuJA6E" 
+            title="YouTube video player" frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+    </iframe>
+  </section>
 </body>
 </html>

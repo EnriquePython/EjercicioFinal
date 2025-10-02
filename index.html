@@ -4,27 +4,227 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Enrique Martínez Messía</title>
-  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* Estilos generales*/
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #87CEEB;
+      margin: 0;
+      padding: 20px;
+    }
+
+    /* Cabezera */
+    .header {
+      border: 3px solid #32CD32;
+      margin: 20px auto;
+      padding: 15px;
+      width: 90%;
+      max-width: 800px;
+      background-color: #B0E0E6;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .foto {
+      width: 80px;
+      height: 100px;
+      border: 2px solid #666;
+      object-fit: cover; /* Ajusta la imagen al contenedor */
+    }
+
+    .header h1 {
+      font-size: 16px;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    /* Menú principal. Secciones: experiencia, formación, idiomas, perfil */
+    .menu {
+      margin: 30px auto;
+      width: 90%;
+      max-width: 800px;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+
+    .menu-item {
+      position: relative; /* Para que el desplegable se posicione debajo */
+      margin: 5px 10px;
+    }
+
+    .menu a {
+      text-decoration: none;
+      color: #FF4500;
+      font-weight: bold;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    /* Pseudoclase :hover para resaltar el link al pasar ratón */
+    .menu a:hover {
+      text-decoration: underline;
+    }
+
+    /* Usamos la propiedad de dropdown para crear desplegables. */
+    .dropdown {
+      display: none; /* Ocultos por defecto */
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 200px;
+      padding: 10px;
+      border-radius: 5px;
+      margin-top: 5px;
+      color: white;
+      z-index: 100;
+    }
+
+    .dropdown.show {
+      display: block; /* Aparece cuando se activa con JS */
+    }
+
+    /* Cada elemento dentro del dropdown */
+    .dropdown p {
+      margin: 5px 0;
+      padding: 5px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+    }
+
+    .dropdown p:last-child {
+      border-bottom: none;
+    }
+
+    /* Definimos la tabla. Dimeniones, color, ... */
+    .tabla {
+      margin: 30px auto;
+      width: 90%;
+      max-width: 600px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: white;
+      font-size: 12px;
+    }
+
+    th, td {
+      border: 1px solid #000;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #E0E0E0;
+      font-weight: bold;
+    }
+
+    /* Celda especial que cambia disciplina al hacer clic */
+    .disciplina-cell {
+      cursor: pointer;
+      font-weight: bold;
+      color: #0073e6;
+    }
+
+    .disciplina-cell:hover {
+      background-color: #e6f2ff; /* pseudoclase :hover */
+    }
+
+    /* Enlaces a Linkdln y Google Maps */
+    .enlaces {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 1000;
+    }
+
+    .enlace-linkedin a {
+      display: inline-block;
+      padding: 10px 15px;
+      background-color: #0077B5;
+      color: white;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .maps-button {
+      padding: 10px 15px;
+      background-color: #4285F4;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    /* Estilo del vídeo */
+    .video-section {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+
+    .video-section iframe {
+      width: 200px;
+      height: 150px;
+      border-radius: 8px;
+    }
+
+    /* Usamos las medias queries para modificar nuestra aplicación wen en función de las dimensiones del dispositivo. */
+    @media (max-width: 768px) {
+      .header {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .enlaces, .video-section {
+        position: static;
+        margin: 20px auto;
+      }
+      
+      .video-section iframe {
+        width: 100%;
+        height: 250px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <!-- Encabezado con foto y nombre -->
+  <!-- La cabezera junto con una foto de perfil y un título. -->
   <header class="header">
-    <div class="header-content">
-      <img src="Foto_perfil.jpg" alt="Foto Enrique Martínez Messía" class="foto">
-      <h1>ENRIQUE MARTÍNEZ MESSÍA DE LA CERDA/MODELADOR BIM</h1>
-    </div>
+    <img src="Foto_perfil.jpg" alt="Foto Enrique Martínez Messía" class="foto">
+    <h1>ENRIQUE MARTÍNEZ MESSÍA DE LA CERDA/MODELADOR BIM</h1>
   </header>
 
-  <!-- Menú -->
-  <nav class="menu">
-    <a href="#">EXPERIENCIA</a>
-    <a href="#">FORMACIÓN</a>
-    <a href="#">HABILIDADES</a>
-    <a href="#">IDIOMAS</a>
-    <a href="#">PERFIL</a>
+  <!-- Menú principal con todas sus secciones. -->
+  <nav class="menu" id="menuPrincipal">
+    <div class="menu-item">
+      <a href="#" onclick="toggleDropdown('experiencia'); return false;">EXPERIENCIA</a>
+      <div class="dropdown" id="dropdown-experiencia"></div>
+    </div>
+    <div class="menu-item">
+      <a href="#" onclick="toggleDropdown('formacion'); return false;">FORMACIÓN</a>
+      <div class="dropdown" id="dropdown-formacion"></div>
+    </div>
+    <div class="menu-item">
+      <a href="#" onclick="toggleDropdown('idiomas'); return false;">IDIOMAS</a>
+      <div class="dropdown" id="dropdown-idiomas"></div>
+    </div>
+    <div class="menu-item">
+      <a href="#" onclick="toggleDropdown('perfil'); return false;">PERFIL</a>
+      <div class="dropdown" id="dropdown-perfil"></div>
+    </div>
   </nav>
 
-  <!-- Tabla -->
+  <!-- Tabla de programas. Usamos tr para indicar una fila de celdas de una tabla. Con td definimos una celda de una tabla. -->
   <section class="tabla">
     <table>
       <tr>
@@ -35,7 +235,7 @@
       <tr>
         <td>REVIT</td>
         <td>PROFESIONAL</td>
-        <td>ARQUITECTURA</td>
+        <td class="disciplina-cell" id="disciplinaCell" onclick="cambiarDisciplina()">ARQUITECTURA</td>
       </tr>
       <tr>
         <td>AutoCAD</td>
@@ -45,29 +245,123 @@
     </table>
   </section>
 
-  <!-- Enlaces -->
+  <!-- Enlaces a linkedln y google Maps. Para ello usamos href. -->
   <section class="enlaces">
     <div class="enlace-linkedin">
-      <a href="https://www.linkedin.com/in/enrique-martinez-messia" target="_blank">
-        www.linkedin.com/in/enrique-martinez-messia
-      </a>
+      <a href="https://www.linkedin.com/in/enrique-martínez-messía" target="_blank">🔗 LinkedIn</a>
     </div>
-    
     <div class="enlace-maps">
-      <span>Link a google maps</span>
       <a href="https://www.google.com/maps/place/Ciudad+Real" target="_blank">
         <button class="maps-button">📍 Ciudad Real</button>
       </a>
     </div>
   </section>
 
-  <!-- Video de YouTube -->
+  <!-- Link al vídeo de youtube. -->
   <section class="video-section">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/9y2X2PpcQoc?si=YyrKhSZHk6UuJA6E" 
-            title="YouTube video player" frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+    <iframe 
+      src="https://www.youtube.com/embed/9y2X2PpcQoc" 
+      title="YouTube video player" 
+      frameborder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen>
     </iframe>
   </section>
+
+  <script>
+    /* Datos del cv. Se guardan en un objeto (JSON). JSON es un formato para trasnportar y guardar datos. Son pares nombre-valor. En este caso, es un tipo de datos de objetos, encerrados entre llaves. */
+    const datosCV = {
+      experiencia: ["Dirección Ejecución de obra", "Modelador BIM"],
+      formacion: ["Ingeniero de Edificación", "Máster en BIM Management"],
+      idiomas: ["Inglés: Medio", "Alemán: Avanzado"],
+      perfil: ["Creativo", "Disciplinado"]
+    };
+
+    /* Desplegables. Se usa Map para saber si están abiertos o cerrados */
+    const estadosDesplegados = new Map([
+      ['experiencia', false],
+      ['formacion', false],
+      ['idiomas', false],
+      ['perfil', false]
+    ]);
+
+    /* Disciplinas. Array para rotar entre valores al hacer clic */
+    const disciplinas = ["ARQUITECTURA", "ESTRUCTURA", "MEP"];
+    let indiceDisciplina = 0;
+
+    // Devuelve color según sección (estructura switch)
+    function obtenerColor(seccion) {
+      switch(seccion) {
+        case 'experiencia': return '#4682B4';
+        case 'formacion': return '#4682B4';
+        case 'idiomas': return '#4682B4';
+        case 'perfil': return '#4682B4';
+        default: return '#4682B4';
+      }
+    }
+
+    // Para manejar el DOM, usamos la función document.getElementById. Llenamos el contenido de un dropdown con bucle for.
+    function llenarDropdown(seccion, datos) {
+      const dropdown = document.getElementById('dropdown-' + seccion);
+      dropdown.innerHTML = '';
+      for (let i = 0; i < datos.length; i++) {
+        const p = document.createElement('p');
+        p.textContent = datos[i];
+        dropdown.appendChild(p);
+      }
+      dropdown.style.backgroundColor = obtenerColor(seccion);
+    }
+
+    // Cierra todos los desplegables usando bucle while
+    function cerrarDropdowns() {
+      const secciones = ['experiencia', 'formacion', 'idiomas', 'perfil'];
+      let i = 0;
+      while (i < secciones.length) {
+        const dropdown = document.getElementById('dropdown-' + secciones[i]);
+        dropdown.classList.remove('show');
+        estadosDesplegados.set(secciones[i], false);
+        i++;
+      }
+    }
+
+    // Abre/cierra el desplegable al hacer clic
+    function toggleDropdown(seccion) {
+      const dropdown = document.getElementById('dropdown-' + seccion);
+      const estaAbierto = dropdown.classList.contains('show');
+      cerrarDropdowns();
+      if (!estaAbierto) {
+        dropdown.classList.add('show');
+        estadosDesplegados.set(seccion, true);
+      }
+    }
+
+    // Cambia la disciplina de la tabla al cliquear sobre ella.
+    function cambiarDisciplina() {
+      indiceDisciplina++;
+      if (indiceDisciplina >= disciplinas.length) {
+        indiceDisciplina = 0;
+      }
+      document.getElementById('disciplinaCell').textContent = disciplinas[indiceDisciplina];
+    }
+
+    // Inicialización al cargar la página. datosCV es un objeto donde se guarda la información del cv. Object.keys(datosCV). Crea un array con los nombres de las secciones.
+    function iniciar() {
+      const secciones = Object.keys(datosCV);
+      for (let i = 0; i < secciones.length; i++) {
+        llenarDropdown(secciones[i], datosCV[secciones[i]]); // El bucle for recorre cada una de esas secciones y llama a la función llenarDropdown.
+      }
+      // Al cliquear fuera del desplegable, se cierra este.
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('.menu-item')) cerrarDropdowns();
+      });
+    }
+
+    // Ejecutar cuando DOM está listo.Se asegura de que la función iniciar() (que llena los menús con datos) se ejecute cuando el HTML ya está cargado.
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', iniciar);
+    } else {
+      iniciar();
+    }
+  </script>
 </body>
 </html>

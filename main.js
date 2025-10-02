@@ -1,1 +1,191 @@
-console.log("Esto es un archivo simple de JS Y esta es una prueba de la practica 0")
+/* Configuramos el fondo azul de la página. */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #87CEEB;
+  margin: 0;
+  padding: 20px;
+  text-align: left;
+}
+
+/* Encabezado. Definimos el color de fondo del encabezado. */
+.header {
+  border: 3px solid #32CD32;
+  margin: 20px auto;
+  padding: 15px;
+  width: 90%;
+  max-width: 800px;
+  background-color: #B0E0E6;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+/* Foto de perfil. Usamos object-fit: cover para que la imagen ocupe el espacio manteniendo su forma. */
+.foto {
+  width: 80px;
+  height: 100px;
+  border: 2px solid #666;
+  object-fit: cover;
+}
+/* El estilo del encabezado con el nombre y profesión. */
+.header h1 {
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+  margin: 0;
+}
+
+/* Menú. Con el método flex-wrap definimos si los elementos se colocan en la primera línea o pasamos a la siguiente. */
+.menu {
+  margin: 30px auto;
+  width: 90%;
+  max-width: 800px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+/* Estilos de los enlaces del menú.  */
+.menu a {
+  text-decoration: none;
+  color: #FF4500;
+  font-weight: bold;
+  font-size: 14px;
+  margin: 5px 10px;
+}
+/* Usamos la pseudoclase hover. Representa la interacción de señalar un elemento, sin necesidad de cliquear..  */
+.menu a:hover {
+  text-decoration: underline;
+  transform: scale(1.1);
+}
+
+/* Estilos para dropdowns */
+.dropdown-content {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Tabla */
+.tabla {
+  margin: 30px auto;
+  width: 90%;
+  max-width: 600px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  font-size: 12px;
+}
+
+th, td {
+  border: 1px solid #000;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #E0E0E0;
+  font-weight: bold;
+}
+
+td {
+  background-color: white;
+  transition: background-color 0.3s ease;
+}
+
+td:hover {
+  background-color: #f0f0f0;
+}
+
+/* Estilos para celda interactiva */
+table tr:nth-child(2) td:nth-child(3) {
+  font-weight: bold;
+  color: #0073e6;
+}
+
+table tr:nth-child(2) td:nth-child(3):hover {
+  background-color: #e6f2ff;
+}
+
+/* Enlaces */
+.enlaces {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.enlace-linkedin a {
+  transition: transform 0.3s ease;
+}
+
+.enlace-linkedin a:hover {
+  transform: scale(1.05);
+}
+
+.enlace-maps button {
+  transition: transform 0.3s ease;
+}
+
+.enlace-maps button:hover {
+  transform: scale(1.05);
+}
+
+.maps-button {
+  cursor: pointer;
+}
+
+/* Video de YouTube */
+.video-section {
+  text-align: center;
+}
+
+.video-section iframe {
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+/* Media Query */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .menu {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .enlaces {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .video-section {
+    position: static !important;
+    margin: 20px auto;
+  }
+  
+  .video-section iframe {
+    width: 100%;
+    height: 250px;
+  }
+}
+
+
+
+
